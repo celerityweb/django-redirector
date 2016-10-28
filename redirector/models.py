@@ -22,7 +22,7 @@ class Redirect(models.Model):
         unique_together = ('site', 'from_url')
 
     def __unicode__(self):
-        if self.object_id:
+        if self.object_id and self.content_object:
             return  '{0} ---> {1}'.format(self.from_url, self.content_object.get_absolute_url())
         else:
             return '{0} ---> {1}'.format(self.from_url, self.to_url)
